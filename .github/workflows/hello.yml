@@ -3,6 +3,10 @@ name: My First Workflow
 
 on:
   push:
+    paths:
+      - "app/**"
+      - "tests/**"
+      - ".github/workflows/hello.yml"
   pull_request:
   workflow_dispatch:
 jobs:
