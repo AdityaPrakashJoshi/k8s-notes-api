@@ -1,7 +1,8 @@
 
 import os
-from flask import Flask, request, jsonify
+
 import psycopg2
+from flask import Flask, jsonify, request
 from psycopg2.extras import RealDictCursor
 
 app = Flask(__name__)
@@ -68,7 +69,7 @@ def health():
             "database": "connected"
         }), 200
 
-    except Exception as error:
+    except psycopg2.OperationalError as error:
         return jsonify({
             "status": "unhealthy",
             "database": "disconnected",
